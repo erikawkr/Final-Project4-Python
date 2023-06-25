@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Mobile Metas -->
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- Site Metas -->
+<title>Credit Card Clustering</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+
+
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+<!-- Site CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<!-- Responsive CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="{{ url_for('static', filename='js/modernizr.js') }}"></script> <!-- Modernizr -->
+<!-- UiKit CSS -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/uikit.min.css') }}">
+
+
+</head>
+
+<body id="page-top" class="politics_version">
+
+	<!-- LOADER -->
+	<div id="preloader">
+		<div id="main-ld">
+			<div id="loader"></div>
+		</div>
+	</div><!-- end loader -->
+	<!-- END LOADER -->
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+		<div class="container">
+
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				Menu
+				<i class="fa fa-bars"></i>
+			</button>
+			<!-- <div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav text-uppercase ml-auto">
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger active" href="#home">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#about">Explanation</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#portfolio">Chart</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#team">Team</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link js-scroll-trigger" href="#contact">Prediction</a>
+					</li>
+				</ul>
+			</div> -->
+		</div>
+	</nav>
+
+	<!-- <section id="home" class="main-banner parallaxie"
+		style="background: url('static/uploads/FP1.png')">
+		<div class="heading">
+			</h3>
+		</div>
+	</section> -->
+
+	<div id="about" class="section wb" data-aos="zoom-in">
+		<div class="container">
+			<div class="row">
+				<div class="">
+					<div class="message-box">
+						<div class="section-title text-center">
+							<h3>Overview</h3>
+
+							<p style='text-align: justify;'>  
+								**Anggota Kelompok** <br>
+								1. Erika Taniya Devi Winckler (PYTN-KS14-020) <br>
+								2. ANAK AGUNG INTEN CAHYANI DEWI (PYTN-KS14-021) <br>
+								3. NI NYOMAN SEKAR WANDANI (PYTN-KS14-024) <br>
+								<br>
+								Clustering is especially useful for exploring data you know nothing about. You might find connections you never would have thought of. Clustering can also be useful as a type of feature engineering, where existing and new examples can be mapped and labeled as belonging 
+								to one of the identified clusters in the data. Some typical real world applications of clustering include fraud detection, categorizing books in a library or customer segmentation in marketing.
+
+								This case requires to develop a customer segmentation to define marketing strategy. The sample Dataset summarizes the usage behavior of about 9000 active credit card holders during the last 6 months. The file is at a customer level with 18 behavioral variables.
+
+							<p style='text-align: justify;'>
+								Pada Final Project 4, Data diambil dari kaggle dengan link : https://www.kaggle.com/datasets/arjunbhasin2013/ccdata
+							</p>	
+						
+						</div><!-- end title -->
+
+						<div class="tab-content mt-3 " id="nav-tabContent">
+							<div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+								aria-labelledby="nav-home-tab">
+								<h3 style="text-align:center;font-weight:bolder; " class="text-muted">Dataset</h3>
+								<p style='text-align: justify;'>
+									Data Description
+								</p>
+								<ul>
+									This case requires to develop a customer segmentation to define marketing strategy. The sample Dataset summarizes the usage behavior of about 9000 active credit card holders during the last 6 months. The file is at a customer level with 18 behavioral variables.
+									<i> 1. CUSTID : Identification of Credit Card holder (Categorical)/li>
+										2. BALANCE : Balance amount left in their account to make purchases
+										3. BALANCEFREQUENCY : How frequently the Balance is updated, score between 0 and 1 (1 = frequently updated, 0 = not frequently updated)
+										4. PURCHASES : Amount of purchases made from account
+										5. ONEOFFPURCHASES : Maximum purchase amount done in one-go
+										6. INSTALLMENTSPURCHASES : Amount of purchase done in installment
+										7. CASHADVANCE : Cash in advance given by the user
+										8. PURCHASESFREQUENCY : How frequently the Purchases are being made, score between 0 and 1 (1 = frequently purchased, 0 = not frequently purchased)
+										9. ONEOFFPURCHASESFREQUENCY : How frequently Purchases are happening in one-go (1 = frequently purchased, 0 = not frequently purchased)
+										10. PURCHASESINSTALLMENTSFREQUENCY : How frequently purchases in installments are being done (1 = frequently done, 0 = not frequently done)
+										11. CASHADVANCEFREQUENCY : How frequently the cash in advance being paid
+										12. CASHADVANCETRX : Number of Transactions made with "Cash in Advanced"
+										13. PURCHASESTRX : Numbe of purchase transactions made
+										15. CREDITLIMIT : Limit of Credit Card for user
+										16. PAYMENTS : Amount of Payment done by user
+										17. MINIMUM_PAYMENTS : Minimum amount of payments made by user
+										18. PRCFULLPAYMENT : Percent of full payment paid by user
+										19. TENURE : Tenure of credit card service for user
+									</i>
+								</ul>
+							</div>
+
+						</div>
+					</div><!-- end messagebox -->
+				</div><!-- end col -->
+			</div><!-- end row -->
+		</div><!-- end container -->
+	</div><!-- end section -->
+
+
+	<div id="portfolio" class="section lb" data-aos="fade-up">
+		<div class=" container">
+			<div class="section-title text-center">
+				<h3>Chart</h3>
+				<p>A chart can represent tabular numeric data, functions or some kinds of quality structure and provides
+					different info.
+				</p>
+			</div><!-- end title -->
+
+			<!-- <section id="home" class="main-banner parallaxie" -->
+			<!-- style="background: url('static/uploads/asu.png')">
+			<div class="heading">
+				</h3>
+			</div>
+			</section>
+			<div class="gallery-menu row">
+				<div class="col-md-12">
+
+				</div>
+			</div> -->
+
+
+
+			<div class="gallery-list row">
+				<!-- Gal_A Section -->
+				<!-- 1 -->
+				<div class="col-md-4 col-sm-6 gallery-grid gal_a">
+					<div>
+						<div class="uk-card-hover bg-transparent">
+							<!-- Animate png -->
+							<div class="uk-animation-toggle" tabindex="0">
+								<div>
+									<a class="uk-inline"
+										href="{{ url_for('static', filename='upload/3_kmeans.png') }}"
+										data-caption="Histogram">
+										<img src="{{ url_for('static', filename='upload/3_kmeans.png') }}" alt=""
+											width="720" height="480">
+									</a>
+									
+								</div>
+							</div>
+							<p style="text-align:center;font-family:'Segoe UI';font-weight: bolder;" class="text-dark">
+								Visualisasi Hasil Clustering K-Means</p>
+						</div>
+					</div>
+				</div>
+				<!-- 1 -->
+				
+				<!-- 2 -->
+				<div class="col-md-4 col-sm-6 gallery-grid gal_a">
+					<div>
+						<div class="uk-card-hover bg-transparent">
+							<!-- Animate png -->
+							<div class="uk-animation-toggle" tabindex="0">
+								<div>
+									<a class="uk-inline"
+										href="{{ url_for('static', filename='upload/2_dbscan.png') }}"
+										data-caption="Transport Name">
+										<img src="{{ url_for('static', filename='upload/2_dbscan.png') }}" alt=""
+											width="720" height="480">
+									</a>
+								</div>
+							</div>
+							<p style="text-align:center;font-family:'Segoe UI';font-weight: bolder;" class="text-dark">
+								Visualisasi Hasil Clustering DBSCAN</p>
+						</div>
+					</div>
+				</div>
+				<!-- 2 -->
+
+				<!-- 3 -->
+				<div class="col-md-4 col-sm-6 gallery-grid gal_a">
+					<div>
+						<div class="uk-card-hover bg-transparent">
+							<!-- Animate png -->
+							<div class="uk-animation-toggle" tabindex="0">
+								<div>
+									<a class="uk-inline"
+										href="{{ url_for('static', filename='upload/1_corr.png') }}"
+										data-caption="Route">
+										<img src="{{ url_for('static', filename='upload/1_corr.png') }}" alt=""
+											width="720" height="480">
+									</a>
+								</div>
+							</div>
+							<p style="text-align:center;font-family:'Segoe UI';font-weight: bolder;" class="text-dark">
+								Correlation Plot</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Gal_B Section -->
+				<!-- 1 -->
+				<!-- 2 -->
+				
+				<!-- 3 -->
+				<div class="col-md-4 col-sm-6 gallery-grid gal_b">
+					<div>
+						<div class="uk-card-hover bg-transparent">
+							
+							
+						</div>
+					</div>
+				</div>
+
+				
+		</div>
+	</div>
+	</div>
+
+ <!-- ======= Contact Section ======= -->
+ <section id="contact" class="contact">
+	<div class="container" data-aos="fade-up">
+
+	  <div class="section-title">
+		<h2>Prediction Section</h2>
+		<p>This section will provide information on which cluster users are in, using the <b>K-Means Clustering</b>
+		  method.
+		</p>
+	  </div>
+
+	  <div class="row">
+
+		<div class="col-lg-5 d-flex align-items-stretch">
+		  <div class="info">
+			<div class="address">
+			  <h4>Hasil Prediksi</h4>
+			  <p>{{ prediction_text }}</p>
+			</div>
+
+			  </nav>
+			  
+			</div>
+
+
+		  </div>
+
+		</div>
+
+		<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+		  <form action="{{ url_for('predict')}}" method="post" class="php-email-form">
+			<div class="row">
+			  <div class="form-group">
+				<label for="BALANCE">Balance</label>
+				<input type="text" class="form-control" name="BALANCE" id="BALANCE"
+				  placeholder="Insert Balance Value - Range (0 - 19043)" required>
+			  </div>
+			  <div class="form-group">
+				<label for="BALANCE_FREQUENCY">Balance Frequency</label>
+				<input type="text" class="form-control" name="BALANCE_FREQUENCY" id="BALANCE_FREQUENCY"
+				  placeholder="Insert Balance Frequency Value - Range (0.0 - 1.0)" required>
+			  </div>
+			  <div class="form-group">
+				<label for="PURCHASES">Purchases</label>
+				<input type="text" class="form-control" name="PURCHASES" id="PURCHASES"
+				  placeholder="Insert value Purchases - Range (0 - 49039)" required>
+			  </div>
+			  <div class="form-group">
+				<label for="ONEOFF_PURCHASES">OneOff Purchases</label>
+				<input type="text" class="form-control" name="ONEOFF_PURCHASES" id="ONEOFF_PURCHASES"
+				  placeholder="Insert value OneOff Purchases - Range (0 - 40761)" required>
+			  </div>
+			  <div class="form-group">
+				<label for="INSTALLMENTS_PURCHASES">Installments Purchases</label>
+				<input type="text" class="form-control" name="INSTALLMENTS_PURCHASES" id="INSTALLMENTS_PURCHASES"
+				  placeholder="Insert value Installments Purchases - Range (0 - 22500)" required>
+			  </div>
+			  <div class="form-group">
+				<label for="CASH_ADVANCE">Cash advance</label>
+				<input type="text" class="form-control" name="CASH_ADVANCE" id="CASH_ADVANCE"
+				  placeholder="Insert value Cash advance - Range (0 - 47137)" required>
+			  </div>
+			  <div class="form-group">
+				<label for="PURCHASES_FREQUENCY">Purchases Frequency</label>
+				<input type="text" class="form-control" name="PURCHASES_FREQUENCY" id="PURCHASES_FREQUENCY"
+				  placeholder="Insert value Purchases Frequency - Range (0.0 - 1.0)" required>
+			  </div>
+			  <div class=" form-group">
+				<label for="ONEOFF_PURCHASES_FREQUENCY">OneOff Purchases Frequency</label>
+				<input type="text" class="form-control" name="ONEOFF_PURCHASES_FREQUENCY"
+				  id="ONEOFF_PURCHASES_FREQUENCY"
+				  placeholder="Insert value OneOff Purchases Frequency - Range (0.0 - 1.0)" required>
+			  </div>
+			  <div class=" form-group">
+				<label for="PURCHASES_INSTALLMENTS_FREQUENCY">Purchases Installments Frequency</label>
+				<input type="text" class="form-control" name="PURCHASES_INSTALLMENTS_FREQUENCY"
+				  id="PURCHASES_INSTALLMENTS_FREQUENCY"
+				  placeholder="Insert value Purchases Installments Frequency - Range (0.0 - 1.0)" required>
+			  </div>
+			  <div class=" form-group">
+				<label for="CASH_ADVANCE_FREQUENCY">Cash Advance Frequency</label>
+				<input type="text" class="form-control" name="CASH_ADVANCE_FREQUENCY" id="CASH_ADVANCE_FREQUENCY"
+				  placeholder="Insert value Cash Advance Frequency - Range (0.0 - 1.5)" required>
+			  </div>
+			  <div class=" form-group">
+				<label for="CASH_ADVANCE_TRX">Cash Advance Transaction</label>
+				<input type="number" class="form-control" name="CASH_ADVANCE_TRX" id="CASH_ADVANCE_TRX"
+				  placeholder="Insert value Cash Advance Transaction - Range (0 - 123)" required min="0" max="123"
+				  value="0">
+			  </div>
+			  <div class="form-group">
+				<label for="PURCHASES_TRX">Purchases Transaction</label>
+				<input type="number" class="form-control" name="PURCHASES_TRX" id="PURCHASES_TRX"
+				  placeholder="Insert value Purchases Transaction - Range (0 - 358)" required min="0" max="358"
+				  value="0">
+			  </div>
+			  <div class="form-group">
+				<label for="CREDIT_LIMIT">Credit Limit</label>
+				<input type="text" class="form-control" name="CREDIT_LIMIT" id="CREDIT_LIMIT"
+				  placeholder="Insert Credit Limit - Range (50 - 30000)" required>
+			  </div>
+			  <div class="form-group">
+				<label for="PAYMENTS">Payments</label>
+				<input type="text" class="form-control" name="PAYMENTS" id="PAYMENTS"
+				  placeholder="Insert Payments - Range (0 - 50721)" required>
+			  </div>
+			  <div class="form-group">
+				<label for="MINIMUM_PAYMENTS">Minimum Payments</label>
+				<input type="text" class="form-control" name="MINIMUM_PAYMENTS" id="MINIMUM_PAYMENTS"
+				  placeholder="Insert Minimum Payments - Range (0 - 76406)" required>
+			  </div>
+			  <div class="form-group">
+				<label for="PRC_FULL_PAYMENT">Price Full Payment</label>
+				<input type="text" class="form-control" name="PRC_FULL_PAYMENT" id="PRC_FULL_PAYMENT"
+				  placeholder="Insert Price Full Payment - Range (0.0 - 1.0)" required">
+			  </div>
+			  <div class="form-group">
+				<label for="TENURE">Tenure</label>
+				<select class="form-select" aria-label="Default select example" name="TENURE" id="TENURE">
+				  <option selected>Choose for Tenure</option>
+				  <option value="6">6 Month</option>
+				  <option value="7">7 Month</option>
+				  <option value="8">8 Month</option>
+				  <option value="9">9 Month</option>
+				  <option value="10">10 Month</option>
+				  <option value="11">11 Month</option>
+				  <option value="12">12 Month</option>
+				</select>
+			  </div>
+			  <div class="text-center"><button type="submit">Predict</button></div>
+		  </form>
+		</div>
+
+	  </div>
+
+	</div>
+  </section><!-- End Contact Section -->
+
+
+<div class="copyrights">
+	<div class="container">
+		<div class="footer-distributed">
+			<div class="footer-center">
+				<p class="footer-company-name">Prediction Site &copy; 2023 | Designed By : Erika, Gung Inten, Sekar </p>
+			</div>
+		</div>
+	</div><!-- end container -->
+</div><!-- end copyrights -->
+
+	<a href="#" id="scroll-to-top" class="dmtop global-radius">
+		<div style="font-size: 20px;">Top</div>
+	</a>
+
+	<!-- ALL JS FILES -->
+
+	<script src="{{ url_for('static', filename='js/all.js') }}"></script>
+	<!-- Camera Slider  -->
+	<script src="{{ url_for('static', filename='js/jquery.mobile.customized.min.js ') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/parallaxie.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/headline.js') }}"></script>
+	<!-- Contact form JavaScript -->
+	<script src="{{ url_for('static', filename='js/jqBootstrapValidation.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/contact_me.js') }}"></script>
+	<!-- ALL PLUGINS -->
+	<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/jquery.vide.js') }}"></script>
+	<!-- Style JS -->
+	<script src="{{ url_for('static', filename='js/style.js') }}"></script>
+	<!-- UIKIT JS CDN -->
+	<script src="{{ url_for('static', filename='js/uikit.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/uikit-icons.min.js') }}"></script>
+	<script>
+		AOS.init();
+	</script>
+</body>
+
+</html>
